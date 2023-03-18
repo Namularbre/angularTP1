@@ -15,6 +15,9 @@ export class ListJobsComponent {
   //form
   jobForm : FormGroup;
 
+  //data from service
+  jobs : Jobs[] = [];
+
   constructor(private formBuilder : FormBuilder, private service : JobsService) {
     this.jobForm = this.formBuilder.group({
       id : ['', Validators.required],
@@ -33,7 +36,7 @@ export class ListJobsComponent {
   }
 
   ngOnInit() {
-    this.service.getJobs().subscribe();
+    this.service.getJobs().subscribe(jobs => this.jobs = jobs);
   }
 
   setJobs(currentJobs : Jobs) {

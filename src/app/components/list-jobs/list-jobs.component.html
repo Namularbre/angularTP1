@@ -1,18 +1,33 @@
-<form [formGroup]="jobForm" (ngSubmit)="onFormSubmit()">
-    <label for="id">id</label>
-    <input id="id" type="number" formControlName="id">
-    <label for="title">titre</label>
-    <input id="title" type="text" formControlName="title">
-    <label for="description">description</label>
-    <input id="description" type="text" formControlName="description">
-    <label for="dateOfPublish">date de publication</label>
-    <input id="dateOfPublish" type="date" formControlName="dateOfPublish">
-    <label for="salary">salary</label>
-    <input id="salary" type="text" formControlName="salary">
-    <label for="location">emplacement</label>
-    <input id="location" type="date" formControlName="location">
-    <input type="submit" id="submit">
-</form>
-<ul>
-    <li *ngFor="let job of "></li>
-</ul>
+<div class="center-align blue lighten-3">
+    <h1 class="3">{{ componentTitle }}</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col center-align">
+            <form class="card" [formGroup]="jobForm" (ngSubmit)="onFormSubmit()">
+                <label for="id">id</label>
+                <input id="id" type="number" formControlName="id">
+                <label for="title">titre</label>
+                <input id="title" type="text" formControlName="title">
+                <label for="description">description</label>
+                <input id="description" type="text" formControlName="description">
+                <label for="dateOfPublish">date de publication</label>
+                <input class="center-align" id="dateOfPublish" type="date" formControlName="dateOfPublish">
+                <label for="salary">salary</label>
+                <input id="salary" type="text" formControlName="salary">
+                <label for="location">emplacement</label>
+                <input id="location" type="text" formControlName="location">
+                <input class="waves-effect waves-light btn" type="submit" id="submit">
+            </form>
+        </div>
+    </div>
+    <ul class="center-align">
+        <li class="card col center-align m6" *ngFor="let job of jobs">
+            <h1>{{ job.title }}</h1>
+            <p>{{ job.description }}</p>
+            <p>{{ job.dateOfPublish }}</p>
+            <p>{{ job.location }}</p>
+            <p>{{ job.salary }}</p>
+        </li>
+    </ul>
+</div>
