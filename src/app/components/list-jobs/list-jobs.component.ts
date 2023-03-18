@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { JobsService } from 'src/app/services/jobs.service';
+import { Jobs } from 'src/app/models/jobs';
 
 @Component({
   selector: 'app-list-jobs',
@@ -10,13 +12,31 @@ export class ListJobsComponent {
   //title of the component
   componentTitle : string = "Liste de jobs";
 
-  //reactive forms control
-  id = new FormControl('');
-  title = new FormControl('');
-  description = new FormControl('');
-  dateOfPublish = new FormControl(`${new Date()}`);
-  salary = new FormControl('');
-  location = new FormControl('');
+  //form
+  jobForm : FormGroup;
 
-  constructor(private formBuilder : FormBuilder) {}
+  constructor(private formBuilder : FormBuilder, private service : JobsService) {
+    this.jobForm = this.formBuilder.group({
+      id : ['', Validators.required],
+      title : ['', Validators.required],
+      description : ['', Validators.required],
+      dateOfPublish : ['', Validators.required],
+      salary : ['', Validators.required],
+      location : ['', Validators.required]
+    });
+  }
+
+  onFormSubmit() {
+    let job : Jobs = this.jobForm.value;
+
+    this.setJobs(job);
+  }
+
+  ngOnInit() {
+    this.service.getJobs().subscribe();
+  }
+
+  setJobs(currentJobs : Jobs) {
+    this.service.addJob(currentJobs);
+  }
 }

@@ -6,7 +6,7 @@ import { Jobs } from '../models/jobs';
   providedIn: 'root'
 })
 export class JobsService {
-  private readonly _jobs : Jobs[] = [
+  private _jobs : Jobs[] = [
     {
       id : 1,
       title : "Développeur C++/Qt",
@@ -38,5 +38,9 @@ export class JobsService {
   //of create an observable taking data from the array above
   getJobs() : Observable<Jobs[]> {
     return of(this._jobs);
+  }
+
+  addJob(job : Jobs) {
+    this._jobs.push(job);
   }
 }

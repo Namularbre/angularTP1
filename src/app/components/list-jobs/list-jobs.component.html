@@ -1,15 +1,18 @@
-<form>
+<form [formGroup]="jobForm" (ngSubmit)="onFormSubmit()">
     <label for="id">id</label>
-    <input id="id" type="number" [formControl]="id">
+    <input id="id" type="number" formControlName="id">
     <label for="title">titre</label>
-    <input id="title" type="text" [formControl]="title">
+    <input id="title" type="text" formControlName="title">
     <label for="description">description</label>
-    <input id="description" type="text" [formControl]="description">
+    <input id="description" type="text" formControlName="description">
     <label for="dateOfPublish">date de publication</label>
-    <input id="dateOfPublish" type="date" [formControl]="dateOfPublish">
+    <input id="dateOfPublish" type="date" formControlName="dateOfPublish">
     <label for="salary">salary</label>
-    <input id="salary" type="text" [formControl]="salary">
+    <input id="salary" type="text" formControlName="salary">
     <label for="location">emplacement</label>
-    <input id="location" type="date" [formControl]="location">
-    <input type="button" id="submit">
+    <input id="location" type="date" formControlName="location">
+    <input type="submit" id="submit">
 </form>
+<ul>
+    <li *ngFor="let job of "></li>
+</ul>
