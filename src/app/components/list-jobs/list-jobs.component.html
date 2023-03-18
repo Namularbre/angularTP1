@@ -2,6 +2,19 @@
     <h1 class="white-text">{{ componentTitle }}</h1>
 </div>
 <div class="container">
+    <ul class="center-align">
+        <li class="card col center-align m6" *ngFor="let job of jobs">
+            <h1>{{ job.title }}</h1>
+            <p>{{ job.description }}</p>
+            <p>{{ job.dateOfPublish }}</p>
+            <p>{{ job.location }}</p>
+            <p>{{ job.salary }}</p>
+        </li>
+    </ul>
+</div>
+<hr>
+<div class="container">
+    <h2 class="center-align">Ajouter une offre à notre site :</h2>
     <div class="row">
         <div class="col center-align">
             <form class="card" [formGroup]="jobForm" (ngSubmit)="onFormSubmit()">
@@ -21,13 +34,4 @@
             </form>
         </div>
     </div>
-    <ul class="center-align">
-        <li class="card col center-align m6" *ngFor="let job of jobs">
-            <h1>{{ job.title }}</h1>
-            <p>{{ job.description }}</p>
-            <p>{{ job.dateOfPublish }}</p>
-            <p>{{ job.location }}</p>
-            <p>{{ job.salary }}</p>
-        </li>
-    </ul>
 </div>
